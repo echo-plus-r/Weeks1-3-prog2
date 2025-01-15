@@ -19,6 +19,13 @@ public class bounce : MonoBehaviour
 
         Vector2 squarescreenspace = Camera.main.WorldToScreenPoint(pos);
 
+        // this seems to run every frame after 'a' or 'd' is pressed. i don't know why
+        if (Input.GetAxis("Horizontal") != 0)
+        {
+            basespeed.x += Input.GetAxis("Horizontal") / 1000;
+            speed = basespeed;
+        }
+
         if (squarescreenspace.x + speed.x < 0 || squarescreenspace.x + speed.x > Screen.width)
         {
             speed.x *= -1;
@@ -28,11 +35,7 @@ public class bounce : MonoBehaviour
             speed.y *= -1;
         }
 
-        // this seems to run every frame after 'a' or 'd' is pressed. i don't know why
-        if (Input.GetAxis("Horizontal") != 0) {
-            basespeed.x += Input.GetAxis("Horizontal") / 1000;
-            speed = basespeed;
-        }
+        
         
 
         pos += speed;
