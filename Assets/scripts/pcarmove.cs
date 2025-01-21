@@ -5,7 +5,8 @@ using UnityEngine;
 public class pcarmove : MonoBehaviour
 {
     public AnimationCurve curve;
-    float t;
+    float t = 0.5f;
+    Vector2 vel = new Vector2(0, 0);
     // Start is called before the first frame update
     void Start()
     {
@@ -34,8 +35,12 @@ public class pcarmove : MonoBehaviour
             pos.y -= 1f;
         }
 
-        // no idea if this will work
-        pos = new Vector2(pos.x + (Mathf.Lerp(-1, 1, curve.Evaluate(t))), pos.y);
+        // commented out as it does not work as intended
+        //pos = new Vector2(pos.x + (Mathf.Lerp(0, 1, curve.Evaluate(t))), pos.y);
+
+        vel.x = Mathf.Lerp(-1, 1, curve.Evaluate(t));
+
+        pos.x += vel.x;
 
 
         transform.position = pos;
