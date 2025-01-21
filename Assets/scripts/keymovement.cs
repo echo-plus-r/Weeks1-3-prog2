@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class keymovement : MonoBehaviour
 {
+    public float speed;
     //Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
@@ -16,20 +17,20 @@ public class keymovement : MonoBehaviour
     {
         Vector2 pos = transform.position;
         if (Input.GetKey("w")) {
-            pos.y += 0.005f;
+            pos.y += speed;
             //rb.AddForce(transform.up * 2f);
         }
         if (Input.GetKey("s"))
         {
-            pos.y -= 0.005f;
+            pos.y -= speed;
         }
         if (Input.GetKey("a"))
         {
-            pos.x -= 0.005f;
+            pos.x -= speed;
         }
         if (Input.GetKey("d"))
         {
-            pos.x += 0.005f;
+            pos.x += speed;
         }
         transform.position = pos;
     }
