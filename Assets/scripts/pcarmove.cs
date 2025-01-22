@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class pcarmove : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class pcarmove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -45,7 +46,20 @@ public class pcarmove : MonoBehaviour
 
         vel.x = Mathf.Lerp(-1, 1, curve.Evaluate(t));
 
-        pos.x += vel.x;
+        //pos.x += vel.x;
+
+        Vector2 posSP = Camera.main.WorldToScreenPoint(pos + vel);
+        //Vector2 velSP = Camera.main.WorldToScreenPoint(vel);
+
+        if ((posSP.x < 0) == false && (posSP.x > Screen.width) == false)
+        {
+            pos.x += vel.x;
+        }
+        else {
+            vel.x = 0;
+            t = 0.5f;
+        }
+
 
 
         transform.position = pos;
