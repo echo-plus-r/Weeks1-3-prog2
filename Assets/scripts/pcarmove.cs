@@ -17,23 +17,28 @@ public class pcarmove : MonoBehaviour
     void Update()
     {
         Vector2 pos = transform.position;
-        if (Input.GetKey("d")) {
-            //pos.x += 1f;
-            t += 0.1f;
+        if (Input.GetKey("w"))
+        {
+            pos.y += 1f * Time.deltaTime;
+        }
+        if (Input.GetKey("s"))
+        {
+            pos.y -= 1f * Time.deltaTime;
         }
         if (Input.GetKey("a"))
         {
             //pos.x -= 1f;
-            t -= 0.1f;
+            t -= 0.009f * Time.deltaTime;
         }
-        if (Input.GetKey("w"))
+        if (Input.GetKey("d"))
         {
-            pos.y += 1f;
+            //pos.x += 1f;
+            t += 0.01f * Time.deltaTime;
         }
-        if (Input.GetKey("s"))
-        {
-            pos.y -= 1f;
+        else {
+            t -= 0.001f * Time.deltaTime;
         }
+
 
         // commented out as it does not work as intended
         //pos = new Vector2(pos.x + (Mathf.Lerp(0, 1, curve.Evaluate(t))), pos.y);
