@@ -31,10 +31,17 @@ public class ocarmove : MonoBehaviour
             cx += 0.1f * Time.deltaTime;
         }
 
-        
+        // converts the position into a screen point
+        pos = Camera.main.WorldToScreenPoint(pos);
 
-        // temporary numbers, use screen point position as the lerp should be between the left edge of the screen and the right edge of the screen
-        pos.x = Mathf.Lerp(0, 10, OtherCurve.Evaluate(cx));
-        transform.position = pos;
+        // evaluating the curve and interpolating it between the horizontal edges of the screen
+        pos.x = Mathf.Lerp(0, Screen.width, OtherCurve.Evaluate(cx));
+
+        // defining a new Vector2 and setting it's value to the world point of pos
+        // note that pos needs to be passed to another Vector2 due to some z axis or Vector3 nonsence
+        Vector2 fpos = Camera.main.ScreenToWorldPoint(pos);
+
+        // setting the car's position
+        transform.position = fpos;
     }
 }
