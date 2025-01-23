@@ -25,11 +25,11 @@ public class pcarmove : MonoBehaviour
         // if statements for up and down ("W" and "S" keys) inputs
         if (Input.GetKey("w"))
         {
-            pos.y += 1f * Time.deltaTime;
+            pos.y += 2f * Time.deltaTime;
         }
         if (Input.GetKey("s"))
         {
-            pos.y -= 1f * Time.deltaTime;
+            pos.y -= 2f * Time.deltaTime;
         }
 
         // if statements for left and right ("A" and "D" keys) inpute
