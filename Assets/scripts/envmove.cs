@@ -14,14 +14,16 @@ public class envmove : MonoBehaviour
     void Update()
     {
         Vector2 screenpos = Camera.main.WorldToScreenPoint(transform.position);
+        Vector2 worldpos = transform.position;
         if (screenpos.x < 0)
         {
             screenpos.x = Screen.width + 10;
+            worldpos = Camera.main.ScreenToWorldPoint(screenpos);
         }
         else 
         {
-            screenpos.x += 1;
+            worldpos.x -= 1f * Time.deltaTime;
         }
-        transform.position = screenpos;
+        transform.position = worldpos;
     }
 }
