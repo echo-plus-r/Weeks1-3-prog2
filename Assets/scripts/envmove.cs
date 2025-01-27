@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class envmove : MonoBehaviour
 {
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,13 +18,16 @@ public class envmove : MonoBehaviour
         Vector2 worldpos = transform.position;
         if (screenpos.x < 0)
         {
-            screenpos.x = Screen.width + 10;
+            screenpos.x = Screen.width;
             worldpos = Camera.main.ScreenToWorldPoint(screenpos);
         }
+        /*
         else 
         {
-            worldpos.x -= 1f * Time.deltaTime;
+            worldpos.x -= speed * Time.deltaTime;
         }
+        */
+        worldpos.x -= speed * Time.deltaTime;
         transform.position = worldpos;
     }
 }
