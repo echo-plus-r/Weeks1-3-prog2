@@ -16,12 +16,15 @@ public class envmove : MonoBehaviour
     {
         Vector2 screenpos = Camera.main.WorldToScreenPoint(transform.position);
         Vector2 worldpos = transform.position;
+        if (worldpos.x < -10) {
+            worldpos.x = 0;
+        }
+        /*
         if (screenpos.x < 0)
         {
             screenpos.x = Screen.width;
             worldpos = Camera.main.ScreenToWorldPoint(screenpos);
         }
-        /*
         else 
         {
             worldpos.x -= speed * Time.deltaTime;
