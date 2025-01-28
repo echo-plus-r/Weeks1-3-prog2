@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ocarmove : MonoBehaviour
 {
-    float cx;
+    public float cx;
     public AnimationCurve OtherCurve;
     // Start is called before the first frame update
     void Start()
